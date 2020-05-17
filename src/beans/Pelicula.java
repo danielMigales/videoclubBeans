@@ -27,7 +27,8 @@ public class Pelicula implements Serializable { //BEAN FUENTE implementa seriali
         propertySupport = new PropertyChangeSupport(this); //se añade
     }
 
-    public Pelicula(String titulo, String director, String actorPrincipal, int duracion, String año, int numeroEjemplar, int totalCopias) {
+    public Pelicula(String titulo, String director, String actorPrincipal, int duracion, String año, int numeroEjemplar,
+            int totalCopias) {
         this.titulo = titulo;
         this.director = director;
         this.actorPrincipal = actorPrincipal;
@@ -36,7 +37,7 @@ public class Pelicula implements Serializable { //BEAN FUENTE implementa seriali
         this.numeroEjemplar = numeroEjemplar;
         this.totalCopias = totalCopias;
         //se añade
-        propertySupport = new PropertyChangeSupport(this); 
+        propertySupport = new PropertyChangeSupport(this);
     }
 
     //se añaden estos dos metodos
@@ -99,8 +100,6 @@ public class Pelicula implements Serializable { //BEAN FUENTE implementa seriali
     public void setAño(String año) {
         this.año = año;
     }
-    
-    
 
     public void setTotalCopias(int valorNuevo) { //modificar este setter y el parametro ponerlo a valorNuevo
 
@@ -112,7 +111,8 @@ public class Pelicula implements Serializable { //BEAN FUENTE implementa seriali
         if (this.totalCopias <= 0) {//ya no se pueden seguir alquilando peliculas
             //entonces se lanza una alerta escrita a la terminal o un dialogo
             System.out.println("PELICULA: Se han agotado las copias.");
-            JOptionPane.showMessageDialog(null, "Alerta copia no disponible", "Esta pelicula no se encuentra disponible.", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Alerta copia no disponible", "Esta pelicula ya no se encuentra disponible.",
+                    JOptionPane.WARNING_MESSAGE);
 
             propertySupport.firePropertyChange("copias disponibles",//LANZAMOS EL EVENTO AL RECEPTOR ENVIANDOLE DATOS
                     valorAnterior, this.totalCopias);

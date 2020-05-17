@@ -4,6 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,8 +34,6 @@ public class Alquiler implements Serializable, PropertyChangeListener {//bean re
         this.fechaDevolucion = fechaDevolucion;
         this.cantidadCopias = cantidadCopias;
     }
-
-   
 
     public int getNumeroSocio() {
         return numeroSocio;
@@ -75,8 +74,6 @@ public class Alquiler implements Serializable, PropertyChangeListener {//bean re
     public void setCantidadCopias(int cantidadCopias) {
         this.cantidadCopias = cantidadCopias;
     }
-    
-    
 
     //se implementan los metodos de la clase abstracta. Dentro de este metodo se ponen los avisos y la accion a realizar
     @Override
@@ -84,14 +81,16 @@ public class Alquiler implements Serializable, PropertyChangeListener {//bean re
 
         //en caso de que se produzca un evento aqui procederé a actuar (aviso de evento)
         System.out.println("ALQUILER: Se han agotado las copias de la pelicula en alquiler");
-
         //se imprimen los valores anterior y nuevo (informacion extra)
         System.out.printf("Copias anteriores: %d%n", evt.getOldValue());
         System.out.printf("Copias disponibles: %d%n", evt.getNewValue());
-
         //se imprime mensaje indicando la accion que va a tomar como medida
-        System.out.println("ALQUILER: Se debe esperar a que haya una devolucion de la pelicula: "
+        System.out.println("ALQUILER: Para un proximo alquiler se debe esperar a que haya una devolucion de la pelicula: "
                 + pelicula.getTitulo() + "\n");
+
+        JOptionPane.showMessageDialog(null, "Alerta copia no disponible", "Esta pelicula no se encuentra disponible.\n" 
+                + "ALQUILER: Se debe esperar a que haya una devolucion de la pelicula: " + pelicula.getTitulo(),
+                    JOptionPane.WARNING_MESSAGE);
 
         //insertar alguna solucion o guardar datos   
     }
