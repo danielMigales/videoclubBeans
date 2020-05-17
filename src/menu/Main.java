@@ -26,8 +26,8 @@ public class Main {
         int nuevo_stock = pelicula.getTotalCopias()- alquiler.getCantidadCopias(); //Decremento el stock
         pelicula.setTotalCopias(nuevo_stock); //cambiamos el stock
 
-        System.out.printf("PEDIDO REALIZADO -->Compro: " + pedido1.getCantidad() + " de "
-                + pedido1.getProducto().getDescripcion() + "\n");
+        System.out.printf("ALQUILER REALIZADO -->Has alquilado: " + alquiler.getCantidadCopias()+ " de "
+                + alquiler.getPelicula().getTitulo()+ "\n");
         
         
         
