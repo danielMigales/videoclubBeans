@@ -111,12 +111,22 @@ public class Pelicula implements Serializable { //BEAN FUENTE implementa seriali
         if (this.totalCopias <= 0) {//ya no se pueden seguir alquilando peliculas
             //entonces se lanza una alerta escrita a la terminal o un dialogo
             System.out.println("PELICULA: Se han agotado las copias.");
-            JOptionPane.showMessageDialog(null, "Alerta copia no disponible", "Esta pelicula ya no se encuentra disponible.",
+            JOptionPane.showMessageDialog(null, "Copias agotadas de esta pelicula.", "MENSAJE DE PELICULA",
                     JOptionPane.WARNING_MESSAGE);
 
             propertySupport.firePropertyChange("copias disponibles",//LANZAMOS EL EVENTO AL RECEPTOR ENVIANDOLE DATOS
                     valorAnterior, this.totalCopias);
         }
     }
+
+    @Override
+    public String toString() {
+        String listado = "Titulo = " + titulo + "\nDirector = " + director + "\nActorPrincipal = " + actorPrincipal + "\nDuracion = " 
+                + duracion + "\nA\u00f1o = " + año + "\nNumeroEjemplar = " + numeroEjemplar + "\nTotalCopias = " + totalCopias + "\n\n";
+        
+        return listado;
+    }
+    
+    
 
 }

@@ -82,15 +82,17 @@ public class Alquiler implements Serializable, PropertyChangeListener {//bean re
         //en caso de que se produzca un evento aqui procederé a actuar (aviso de evento)
         System.out.println("ALQUILER: Se han agotado las copias de la pelicula en alquiler");
         //se imprimen los valores anterior y nuevo (informacion extra)
-        System.out.printf("Copias anteriores: %d%n", evt.getOldValue());
-        System.out.printf("Copias disponibles: %d%n", evt.getNewValue());
+        System.out.printf("Copias disponibles anteriormente: %d%n", evt.getOldValue());
+        System.out.printf("Copias disponibles ahora: %d%n", evt.getNewValue());
         //se imprime mensaje indicando la accion que va a tomar como medida
         System.out.println("ALQUILER: Para un proximo alquiler se debe esperar a que haya una devolucion de la pelicula: "
                 + pelicula.getTitulo() + "\n");
 
-        JOptionPane.showMessageDialog(null, "Alerta copia no disponible", "Esta pelicula no se encuentra disponible.\n" 
-                + "ALQUILER: Se debe esperar a que haya una devolucion de la pelicula: " + pelicula.getTitulo(),
-                    JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, 
+                "ALQUILER: Se debe esperar a que haya una devolucion de la pelicula: " + pelicula.getTitulo(),"Copias Agotadas",
+                JOptionPane.WARNING_MESSAGE);
+        
+        
 
         //insertar alguna solucion o guardar datos   
     }
